@@ -3,23 +3,21 @@
 namespace App\Console\Commands;
 
 use Illuminate\Console\Command;
-use Illuminate\Contracts\Filesystem\Filesystem;
-use Illuminate\Support\Facades\File;
 
-class MakeView extends Command {
+class MakePage extends Command {
   /**
    * The name and signature of the console command.
    *
    * @var string
    */
-  protected $signature = 'make:view {view}';
+  protected $signature = 'make:page {name}';
 
   /**
    * The console command description.
    *
    * @var string
    */
-  protected $description = 'Create a new blade template view.';
+  protected $description = 'Create a new page.';
 
   /**
    * Create a new command instance.
@@ -36,11 +34,11 @@ class MakeView extends Command {
    * @return void
    */
   public function handle() {
-    $view = $this->argument('view');
-    $path = 'resources/views/' . str_replace('.', '/', $view) . '.blade.php';
+    $name = $this->argument('name');
+    $path = 'resources/views/pages/' . str_replace('.', '/', $name) . '.blade.php';
 
     if (file_exists($path)) {
-      $this->error("View {$view} already exists!");
+      $this->error("Page {$name} already exists!");
       return;
     }
 
@@ -63,6 +61,6 @@ class MakeView extends Command {
       "@endsection\n\n";
     file_put_contents($path, $content);
 
-    $this->info("View {$view} created.");
+    $this->info("Page {$name} created.");
   }
 }

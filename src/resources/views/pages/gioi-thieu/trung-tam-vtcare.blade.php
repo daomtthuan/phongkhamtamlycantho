@@ -1,11 +1,11 @@
 @extends('layouts.app')
 
 @section('title')
-@parent
+@parent - Giới thiệu - Trung tâm VTCare
 @endsection
 
 @section('template')
-<x-global.navbar :active-labels="['Trang chủ']" />
+<x-global.navbar :active-labels="['Giới thiệu', 'Trung tâm VTCare']" />
 <div></div>
 @endsection
 

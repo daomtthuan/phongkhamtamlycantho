@@ -3,6 +3,7 @@
 namespace App\View\Components\Global;
 
 use Illuminate\View\Component;
+use Illuminate\Support\Str;
 
 class Navbar extends Component {
   /**
@@ -17,7 +18,7 @@ class Navbar extends Component {
    *
    * @var array[]
    */
-  public $items;
+  private $items;
 
   /**
    * Create a new component instance.
@@ -28,58 +29,79 @@ class Navbar extends Component {
   public function __construct($activeLabels) {
     $this->activeLabels = $activeLabels;
     $this->items = [
-      ['label' => 'Trang chủ', 'url' => '/'],
-      [
-        'label' => 'Giới thiệu',
-        'items' => [
-          ['label' => 'Bác Sĩ Tâm Lý - SKTT', 'url' => '/'],
-          ['label' => 'Phòng Khám Tâm Lý', 'url' => '/'],
-          ['label' => 'Trung tâm VTCare', 'url' => '/'],
-        ]
-      ],
-      [
-        'label' => 'Dịch vụ',
-        'items' => [
-          ['label' => 'Thăm khám và tư vấn tâm lý', 'url' => '/'],
-          ['label' => 'Hướng dẫn phụ huynh can thiệp cho trẻ', 'url' => '/'],
-          ['label' => 'Can thiệp cho trẻ, giúp trẻ phát triển / hoà nhập', 'url' => '/'],
-        ]
-      ],
-      [
-        'label' => 'Trắc nghiệm tâm lý',
-        'items' => [
-          ['label' => 'Nguy cơ tự kỷ - chậm nói', 'url' => '/'],
-          ['label' => 'Tăng động giảm chú ý', 'url' => '/'],
-          ['label' => 'Trầm Cảm - Hưng Cảm', 'url' => '/'],
-          ['label' => 'Lo âu – Mất ngủ', 'url' => '/'],
-          ['label' => 'Nghiện Game / Rượu / Chất', 'url' => '/'],
-          ['label' => 'Sa sút trí tuệ - tập trung', 'url' => '/'],
-          ['label' => 'Đánh giá trẻ tại trung tâm VTCare', 'url' => '/'],
-        ]
-      ],
-      [
-        'label' => 'Gốc kiến thức',
-        'items' => [
-          ['label' => 'Chậm nói', 'url' => '/'],
-          ['label' => 'Tự kỷ', 'url' => '/'],
-          ['label' => 'Tăng động', 'url' => '/'],
-          ['label' => 'Mất ngủ', 'url' => '/'],
-          ['label' => 'Lo âu', 'url' => '/'],
-          ['label' => 'Trầm cảm', 'url' => '/'],
-          ['label' => 'Chuyên ngành', 'url' => '/'],
-        ]
-      ],
-      [
-        'label' => 'Tin tức / hoạt động',
-        'items' => [
-          ['label' => 'Tuyển dụng', 'url' => '/'],
-          ['label' => 'Hình ảnh / hoạt động', 'url' => '/'],
-          ['label' => 'Cập nhật y học', 'url' => '/'],
-        ]
-      ]
+      $this->item('Trang chủ', false),
+      $this->groupItems('Giới thiệu', [
+        'Bác sĩ tâm lý - SKTT',
+        'Phòng khám tâm lý',
+        'Trung tâm VTCare'
+      ]),
+      $this->groupItems('Dịch vụ', [
+        'Thăm khám và tư vấn tâm lý',
+        'Hướng dẫn phụ huynh can thiệp cho trẻ',
+        'Can thiệp cho trẻ, giúp trẻ phát triển / hoà nhập',
+      ]),
+      $this->groupItems('Trắc nghiệm tâm lý', [
+        'Nguy cơ tự kỷ - chậm nói',
+        'Tăng động giảm chú ý',
+        'Trầm Cảm - Hưng Cảm',
+        'Lo âu – Mất ngủ',
+        'Nghiện Game / Rượu / Chất',
+        'Sa sút trí tuệ - tập trung',
+        'Đánh giá trẻ tại trung tâm VTCare',
+      ]),
+      $this->groupItems('Góc kiến thức', [
+        'Chậm nói',
+        'Tự kỷ',
+        'Tăng động',
+        'Mất ngủ',
+        'Lo âu',
+        'Trầm cảm',
+        'Chuyên ngành',
+      ]),
+      $this->groupItems('Tin tức / hoạt động', [
+        'Tuyển dụng',
+        'Hình ảnh / hoạt động',
+        'Cập nhật y học',
+      ]),
     ];
   }
 
+  /**
+   * Create item
+   *
+   * @param string $label Label item
+   * @param bool $url Is generate url from label
+   * @return array
+   */
+  private function item($label, $url = true) {
+    return [
+      'label' => $label,
+      'url' => '/' . ($url ? Str::slug($label) : '')
+    ];
+  }
+
+  /**
+   * Create group items
+   *
+   * @param string $label Label group
+   * @param string[] $items Label items
+   * @return array
+   */
+  private function groupItems($label, $items) {
+    $groupItems = [
+      'label' => $label,
+      'items' => [],
+    ];
+
+    foreach ($items as $item) {
+      $groupItems['items'][] = [
+        'label' => $item,
+        'url' => '/' . Str::slug($label) . '/' . Str::slug($item),
+      ];
+    }
+
+    return $groupItems;
+  }
 
   /**
    * Get menu navbar
@@ -87,15 +109,15 @@ class Navbar extends Component {
    * @return string
    */
   public function menu() {
-    $html = '<ul class="navbar-nav me-auto mb-2 mb-lg-0">';
+    $html = '<ul class="navbar-nav mb-2 mb-lg-0">';
     foreach ($this->items as $item) {
       if (array_key_exists('items', $item)) {
         $html .=
           '<li class="nav-item dropdown">' .
-          '<a class="' . (in_array($item['label'], $this->activeLabels) ? 'nav-link dropdown-toggle active' : 'nav-link dropdown-toggle') . '" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">' .
+          '<a class="' . (in_array($item['label'], $this->activeLabels) ? 'nav-link active fw-bold border-bottom border-dark' : 'nav-link') . '" role="button" data-bs-toggle="dropdown" aria-expanded="false">' .
           $item['label'] .
           '</a>' .
-          '<ul class="dropdown-menu">';
+          '<ul class="dropdown-menu dropdown-menu-end">';
 
         foreach ($item['items'] as $childItem) {
           $html .=
@@ -112,7 +134,7 @@ class Navbar extends Component {
       } else {
         $html .=
           '<li class="nav-item">' .
-          '<a class="' . (in_array($item['label'], $this->activeLabels) ? 'nav-link active' : 'nav-link') . '" href="' . $item['url'] . '">' .
+          '<a class="' . (in_array($item['label'], $this->activeLabels) ? 'nav-link active fw-bold border-bottom border-dark' : 'nav-link') . '" href="' . $item['url'] . '">' .
           $item['label'] .
           '</a>' .
           '</li>';
