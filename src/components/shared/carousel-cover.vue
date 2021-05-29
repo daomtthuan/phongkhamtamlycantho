@@ -1,8 +1,11 @@
 <template>
   <div class="compoent-shared-carousel-cover">
-    <b-carousel controls fade indicators label-goto-slide="Đến ảnh" label-indicators="Chọn để đến ảnh" label-next="Ảnh sau" label-prev="Ảnh trước">
-      <b-carousel-slide v-for="(image, index) in images" :key="index" :img-src="image"></b-carousel-slide>
-    </b-carousel>
+    <b-container>
+      <b-carousel controls fade indicators label-goto-slide="Đến ảnh" label-indicators="Chọn để đến ảnh" label-next="Ảnh sau" label-prev="Ảnh trước">
+        <b-carousel-slide v-for="(image, index) in images" :key="index" :img-src="image"></b-carousel-slide>
+      </b-carousel>
+      <hr />
+    </b-container>
   </div>
 </template>
 

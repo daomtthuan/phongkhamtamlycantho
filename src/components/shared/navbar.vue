@@ -1,6 +1,6 @@
 <template>
   <div class="compoent-shared-navbar sticky-top">
-    <b-navbar toggleable="lg" type="light" variant="white">
+    <b-navbar toggleable="lg" type="light" variant="white" class="shadow">
       <b-navbar-brand href="/" class="font-weight-bold text-primary">
         <span class="d-none d-sm-inline">PHÒNG KHÁM TÂM LÝ CẦN THƠ</span>
         <span class="d-sm-none">PK. TÂM LÝ CẦN THƠ</span>
