@@ -1,7 +1,7 @@
 <template>
   <div class="compoent-shared-navbar sticky-top">
     <b-navbar toggleable="lg" type="light" variant="white" class="shadow">
-      <b-navbar-brand href="/" class="font-weight-bold text-primary">
+      <b-navbar-brand to="/" class="font-weight-bold text-primary">
         <span class="d-none d-sm-inline">PHÒNG KHÁM TÂM LÝ CẦN THƠ</span>
         <span class="d-sm-none">PK. TÂM LÝ CẦN THƠ</span>
       </b-navbar-brand>
@@ -14,11 +14,11 @@
         <b-navbar-nav class="ml-auto">
           <div v-for="navItem in navItems" :key="navItem.to">
             <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items" :class="{ active: isActive(navItem) }" no-caret>
-              <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to" :active="isActive(navChildItem)">
+              <b-dropdown-item :to="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to" :active="isActive(navChildItem)">
                 {{ navChildItem.label }}
               </b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item :href="navItem.to" :active="isActive(navItem)" v-else>
+            <b-nav-item :to="navItem.to" :active="isActive(navItem)" v-else>
               <fa icon="home" v-if="navItem.to == '/trang-chu'"></fa>
               <span class="d-none d-xl-inline">{{ navItem.label }}</span>
             </b-nav-item>
@@ -45,7 +45,7 @@
                 <b-card no-body class="mt-2">
                   <b-card-body class="py-2 px-0">
                     <b-link
-                      :href="navChildItem.to"
+                      :to="navChildItem.to"
                       v-for="navChildItem in navItem.items"
                       :key="navChildItem.to"
                       :active="isActive(navChildItem)"
@@ -58,7 +58,7 @@
               </b-collapse>
             </div>
 
-            <b-button :href="navItem.to" block :variant="isActive(navItem) ? 'primary' : 'light'" class="text-right mt-2" v-else>
+            <b-button :to="navItem.to" block :variant="isActive(navItem) ? 'primary' : 'light'" class="text-right mt-2" v-else>
               {{ navItem.label }}
             </b-button>
           </div>

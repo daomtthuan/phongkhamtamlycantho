@@ -27,7 +27,7 @@
   "devDependencies": {
     "@nuxt/types": "^2.15.6",
     "@nuxt/typescript-build": "^2.1.0",
-    "sass": "1.32.12",
-    "sass-loader": "10.1.1"
+    "sass": "1.32.13",
+    "sass-loader": "10.2.0"
   }
 }

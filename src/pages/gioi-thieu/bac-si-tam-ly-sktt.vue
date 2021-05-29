@@ -1,70 +1,79 @@
 <template>
   <div class="page-gioi-thieu-bac-si-tam-ly-sktt">
-    <shared-navbar></shared-navbar>
-    <shared-carousel-cover></shared-carousel-cover>
-    <b-container>
-      <h1 class="text-primary">BÁC SĨ TÂM LÝ - SKTT</h1>
+    <h1 class="text-primary">BÁC SĨ TÂM LÝ - SKTT</h1>
 
-      <hr />
-      <h2>THÔNG TIN CÁ NHÂN</h2>
-      <hr />
+    <hr />
+    <h2>THÔNG TIN CÁ NHÂN</h2>
+    <hr />
 
-      <dl>
-        <dt>Họ tên:</dt>
-        <dd>Trần Thiện Thắng</dd>
+    <dl>
+      <dt>Họ tên:</dt>
+      <dd>Trần Thiện Thắng</dd>
 
-        <dt>Ngày tháng năm sinh:</dt>
-        <dd>09/09/1990</dd>
+      <dt>Ngày tháng năm sinh:</dt>
+      <dd>09/09/1990</dd>
 
-        <dt>Email:</dt>
-        <dd>ttthang@ctump.edu.vn</dd>
+      <dt>Email:</dt>
+      <dd>ttthang@ctump.edu.vn</dd>
 
-        <dt>Điện thoại:</dt>
-        <dd>091599999x</dd>
-      </dl>
+      <dt>Điện thoại:</dt>
+      <dd>091599999x</dd>
+    </dl>
 
-      <hr />
-      <h2>ĐÀO TẠO - CHỨNG CHỈ</h2>
-      <hr />
+    <hr />
+    <h2>ĐÀO TẠO - CHỨNG CHỈ</h2>
+    <hr />
 
-      <b-table head-variant="light" hover :items="items" :fields="fields" small></b-table>
+    <b-table head-variant="light" hover :items="items" :fields="fields" small></b-table>
 
-      <hr />
-      <h2>CÔNG TÁC</h2>
-      <hr />
+    <hr />
+    <h2>CÔNG TÁC</h2>
+    <hr />
 
-      <p>---</p>
+    <p>---</p>
 
-      <hr />
-      <h2>CÔNG TRÌNH NGHIÊN CỨU TIÊU BIỂU</h2>
-      <hr />
+    <hr />
+    <h2>CÔNG TRÌNH NGHIÊN CỨU TIÊU BIỂU</h2>
+    <hr />
 
-      <ol>
-        <li>Xây dựng mô hình sàng lọc, chẩn đoán sớm và can thiệp cho trẻ em bị rối loạn phổ tự kỷ trên địa bàn thành phố Cần Thơ - Đề tài cấp thành phố</li>
-        <li>Sàng lọc, chẩn đoán và can thiệp sớm cho trẻ từ 18 đến 36 tháng bị rối loạn phổ tự kỷ tại tỉnh Cà Mau - Đề tài cấp tỉnh</li>
-        <li>Nghiên cứu đặc điểm trẻ tự kỷ ở long an và đề ra giải pháp can thiệp - Đề tài cấp tỉnh</li>
-        <li>Đặc điểm lâm sàng và các yếu tố liên quan trẻ rối loạn tự kỷ tại Bệnh viện Tâm Thần Cần Thơ</li>
-        <li>Nghiên cứu hiệu quả điều trị trầm cảm chủ yếu bằng venlafaxine tại bệnh viện tâm thần thành phố Hồ Chí Minh, Việt Nam</li>
-        <li>Đánh giá kết quả điều trị ngoại trú bệnh trầm cảm tại khoa khám Bệnh viện Tâm Thần thành phố Cần Thơ 2015</li>
-        <li>
-          Global Mental Health: Child and Adolescent Psychiatry in the Mekong Delta of Vietnam, 2018, American Academy of Child and Adolescent Psychoatry News
-        </li>
-      </ol>
+    <ol>
+      <li>Xây dựng mô hình sàng lọc, chẩn đoán sớm và can thiệp cho trẻ em bị rối loạn phổ tự kỷ trên địa bàn thành phố Cần Thơ - Đề tài cấp thành phố</li>
+      <li>Sàng lọc, chẩn đoán và can thiệp sớm cho trẻ từ 18 đến 36 tháng bị rối loạn phổ tự kỷ tại tỉnh Cà Mau - Đề tài cấp tỉnh</li>
+      <li>Nghiên cứu đặc điểm trẻ tự kỷ ở long an và đề ra giải pháp can thiệp - Đề tài cấp tỉnh</li>
+      <li>Đặc điểm lâm sàng và các yếu tố liên quan trẻ rối loạn tự kỷ tại Bệnh viện Tâm Thần Cần Thơ</li>
+      <li>Nghiên cứu hiệu quả điều trị trầm cảm chủ yếu bằng venlafaxine tại bệnh viện tâm thần thành phố Hồ Chí Minh, Việt Nam</li>
+      <li>Đánh giá kết quả điều trị ngoại trú bệnh trầm cảm tại khoa khám Bệnh viện Tâm Thần thành phố Cần Thơ 2015</li>
+      <li>
+        Global Mental Health: Child and Adolescent Psychiatry in the Mekong Delta of Vietnam, 2018, American Academy of Child and Adolescent Psychoatry News
+      </li>
+    </ol>
 
-      <hr />
-      <h2>CÁC HOẠT ĐỘNG TIÊU BIỂU</h2>
-      <hr />
+    <hr />
+    <h2>CÁC HOẠT ĐỘNG TIÊU BIỂU</h2>
+    <hr />
 
-      <b-card-group class="mt-3" deck v-for="index in fields.length / 3" :key="index">
-        <b-card>
-          <b-embed src=""></b-embed>
-          <b-card-text></b-card-text>
+    <b-row class="mt-3" v-for="rowIndex in Math.round(activities.length / 3)" :key="rowIndex">
+      <b-col v-for="colIndex in 3" :key="colIndex" lg="4">
+        <b-card v-if="activity(rowIndex, colIndex)" class="h-100">
+          <template #header>
+            <img :src="activity(rowIndex, colIndex).embed" v-if="activity(rowIndex, colIndex).image" width="100%" />
+            <b-embed :src="activity(rowIndex, colIndex).embed" v-else></b-embed>
+          </template>
+
+          <template #default>
+            <b-card-text>
+              {{ activity(rowIndex, colIndex).text }}
+            </b-card-text>
+          </template>
+
           <template #footer>
-            <b-button href="https://www.facebook.com/ivfphuongchau/videos/719034328714406/?vh=e&d=n" variant="primary" size="sm">Xem</b-button>
+            <div class="text-right">
+              <b-button :to="activity(rowIndex, colIndex).src" size="sm">Xem chi tiết</b-button>
+            </div>
           </template>
         </b-card>
-      </b-card-group>
-    </b-container>
+      </b-col>
+    </b-row>
   </div>
 </template>
 
@@ -80,7 +89,9 @@ interface Certificate {
 
 interface Activity {
   text: string;
+  image?: boolean;
   embed: string;
+  src: string;
 }
 
 @Component({
@@ -125,35 +136,49 @@ export default class extends Vue {
   private activities: Activity[] = [
     {
       text: 'Sức khoẻ của: "Tìm hiểu hội chứng tự kỷ ở trẻ em" - Đài Truyền hình Vĩnh Long THVL1',
-      embed: 'https://www.youtube.com/embed/Am2mfi_nzr8'
+      embed: 'https://www.youtube-nocookie.com/embed/Am2mfi_nzr8',
+      src: 'https://youtu.be/Am2mfi_nzr8'
     },
     {
-      text: 'Hiểu đúng về tự kỷ ở trẻ em – Báo Cần Thơ',
-      embed: 'https://baocantho.com.vn/image/fckeditor/upload/2019/20191111/images/tre.jpg'
+      text: 'Sức khoẻ của bạn – "Tìm hiểu hội chứng ttăng động ở trẻ"  Đài Truyền hình Vĩnh Long THVL1',
+      embed: 'https://www.youtube-nocookie.com/embed/cSYiSS1QX5M',
+      src: 'https://youtu.be/cSYiSS1QX5M'
     },
     {
-      text: 'Một phút cảnh báo – "Cảnh báo trẻ chậm nói" – Truyền hình quốc gia VTV9',
+      text: 'Một phút cảnh báo – “Cảnh báo trẻ chậm nói” – Truyền hình quốc gia VTV9 ',
       embed:
-        'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Ftintucvtv9%2Fvideos%2F377641520091631%2F&show_text=false&width=560&t=0'
+        'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Ftintucvtv9%2Fvideos%2F377641520091631%2F&show_text=false&width=560&t=0',
+      src: 'https://fb.watch/5OjWlx25Du/'
     },
     {
       text: 'Livestream – "Trầm cảm, lo âu có làm giảm nguy cơ có làm giảm nguy cơ hiếm muộn"',
-      embed: 'https://www.facebook.com/ivfphuongchau/videos/719034328714406/?vh=e&d=n'
+      embed:
+        'https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Fivfphuongchau%2Fvideos%2F719034328714406%2F&show_text=false&width=560&t=0',
+      src: 'https://fb.watch/5OjUDMfy7H/'
     },
     {
-      text: 'Sức khoẻ của bạn– "Tìm hiểu hội chứng tăng động ở trẻ" Đài Truyền hình Vĩnh Long THVL1',
-      embed: 'https://youtu.be/cSYiSS1QX5M'
+      text: 'Hiểu đúng về tự kỷ ở trẻ em – Báo Cần Thơ',
+      image: true,
+      embed: '/images/pages/gioi-thieu/1.jpg',
+      src: 'https://baocantho.com.vn/hieu-dung-ve-tu-ky-o-tre-em--a115061.html?fbclid=IwAR2ER0bzhgIdf2dMidPrGwYTeFuZkqx5SHPKbvOGHnXJdzSrIcr_zEK7xTc'
     },
     {
       text: 'Vai trò của tri thức với sức khoẻ và tinh thần của bà mẹ và trẻ em thời kỳ sau Covid-19 – Câu lạc bộ tri thức tỉnh Vĩnh Long',
-      embed:
-        'http://www.baovinhlong.com.vn/xa-hoi/y-te/202010/vai-tro-tri-thuc-voi-cham-soc-suc-khoe-va-tinh-than-ba-me-va-tre-em-thoi-ky-sau-covid-19-3027248/?fbclid=IwAR0EFoDv_SPlsK4wxIi3ek9vZKJIyJqi64WiDhBWbvy0CQ4N_08LV8kFQvA#.X66-N9MzY1K'
+      image: true,
+      embed: '/images/pages/gioi-thieu/2.jpg',
+      src:
+        'http://www.baovinhlong.com.vn/xa-hoi/y-te/202010/vai-tro-tri-thuc-voi-cham-soc-suc-khoe-va-tinh-than-ba-me-va-tre-em-thoi-ky-sau-covid-19-3027248/?fbclid=IwAR0EFoDv_SPlsK4wxIi3ek9vZKJIyJqi64WiDhBWbvy0CQ4N_08LV8kFQvA#.X66-N9MzY1KxTc'
     }
   ];
+
+  private activity(rowIndex: number, colIndex: number) {
+    return this.activities[3 * rowIndex + colIndex - 4];
+  }
 }
 </script>
 
 <style lang="scss">
 // .page-gioi-thieu-bac-si-tam-ly-sktt {
+
 // }
 </style>

@@ -1,5 +1,15 @@
 <template>
-  <nuxt class="layout-default"></nuxt>
+  <div class="layout-default">
+    <shared-navbar></shared-navbar>
+
+    <b-container>
+      <b-row>
+        <shared-carousel-cover></shared-carousel-cover>
+      </b-row>
+
+      <nuxt></nuxt>
+    </b-container>
+  </div>
 </template>
 
 <script lang="ts">

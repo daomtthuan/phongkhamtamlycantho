@@ -1,14 +1,10 @@
 <template>
   <div class="page-trang-chu">
-    <shared-navbar></shared-navbar>
-    <shared-carousel-cover></shared-carousel-cover>
-    <b-container>
-      <b-row>
-        <b-col></b-col>
-        <b-col></b-col>
-        <b-col></b-col>
-      </b-row>
-    </b-container>
+    <b-row>
+      <b-col></b-col>
+      <b-col></b-col>
+      <b-col></b-col>
+    </b-row>
   </div>
 </template>
 
