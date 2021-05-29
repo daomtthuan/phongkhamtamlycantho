@@ -45,5 +45,6 @@ export default <NuxtTypes.NuxtConfig>{
         component: resolve(__dirname, 'pages/trang-chu.vue')
       });
     }
-  }
+  },
+  telemetry: false
 };

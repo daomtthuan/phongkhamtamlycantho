@@ -1,22 +1,24 @@
 <template>
-  <b-navbar toggleable="lg" type="light" variant="white">
-    <b-navbar-brand href="#">PHÒNG KHÁM TẤM LÝ CẦN THƠ</b-navbar-brand>
-    <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
-    <b-collapse id="nav-collapse" is-nav>
-      <b-navbar-nav class="ml-auto">
-        <div v-for="navItem in navItems" :key="navItem.to">
-          <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items">
-            <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to">
-              {{ navChildItem.label }}
-            </b-dropdown-item>
-          </b-nav-item-dropdown>
-          <b-nav-item :href="navItem.to" v-else>
-            {{ navItem.label }}
-          </b-nav-item>
-        </div>
-      </b-navbar-nav>
-    </b-collapse>
-  </b-navbar>
+  <div class="compoent-shared-navbar">
+    <b-navbar toggleable="lg" type="light" variant="white">
+      <b-navbar-brand href="/">PHÒNG KHÁM TẤM LÝ CẦN THƠ</b-navbar-brand>
+      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-collapse id="nav-collapse" is-nav>
+        <b-navbar-nav class="ml-auto">
+          <div v-for="navItem in navItems" :key="navItem.to">
+            <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items">
+              <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to">
+                {{ navChildItem.label }}
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+            <b-nav-item :href="navItem.to" v-else>
+              {{ navItem.label }}
+            </b-nav-item>
+          </div>
+        </b-navbar-nav>
+      </b-collapse>
+    </b-navbar>
+  </div>
 </template>
 
 <script lang="ts">
@@ -29,7 +31,7 @@ interface NavItem {
 }
 
 @Component({
-  name: 'component-shared-navbar'
+  name: 'compoent-shared-navbar'
 })
 export default class extends Vue {
   @Prop({ default: () => [] })
@@ -82,3 +84,8 @@ export default class extends Vue {
   }
 }
 </script>
+
+<style lang="scss">
+// .compoent-shared-navbar {
+// }
+</style>

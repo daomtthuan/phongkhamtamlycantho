@@ -1,0 +1,77 @@
+{
+  "Nuxt layout template": {
+    "scope": "vue",
+    "prefix": "layout-template",
+    "body": [
+      "<template>",
+      "  <nuxt class=\"layout-${1:name}\">${0}</nuxt>",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { Component, Vue } from 'nuxt-property-decorator';",
+      "",
+      "@Component({",
+      "  name: 'layout-${1:name}'",
+      "})",
+      "export default class extends Vue {}",
+      "</script>",
+      "",
+      "<style lang=\"scss\">",
+      "// .layout-${1:name} {",
+      "// }",
+      "</style>"
+    ],
+    "description": "Nuxt layout template"
+  },
+
+  "Nuxt compoent template": {
+    "scope": "vue",
+    "prefix": "compoent-template",
+    "body": [
+      "<template>",
+      "  <div class=\"compoent-${1:name}\">${0}</div>",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { Component, Vue } from 'nuxt-property-decorator';",
+      "",
+      "@Component({",
+      "  name: 'compoent-${1:name}'",
+      "})",
+      "export default class extends Vue {}",
+      "</script>",
+      "",
+      "<style lang=\"scss\">",
+      "// .compoent-${1:name} {",
+      "// }",
+      "</style>"
+    ],
+    "description": "Nuxt compoent template"
+  },
+
+  "Nuxt page template": {
+    "scope": "vue",
+    "prefix": "page-template",
+    "body": [
+      "<template>",
+      "  <div class=\"page-${1:name}\">${0}</div>",
+      "</template>",
+      "",
+      "<script lang=\"ts\">",
+      "import { Component, Vue } from 'nuxt-property-decorator';",
+      "",
+      "@Component({",
+      "  name: 'page-${1:name}',",
+      "  head: { title: '${2:title}' }",
+      "})",
+      "export default class extends Vue {}",
+      "</script>",
+      "",
+      "<style lang=\"scss\">",
+      "// .page-${1:name} {",
+      "// }",
+      "</style>"
+    ],
+    "description": "Nuxt page template"
+  }
+}

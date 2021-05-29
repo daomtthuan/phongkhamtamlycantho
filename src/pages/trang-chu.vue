@@ -1,6 +1,7 @@
 <template>
-  <div>
+  <div class="page-trang-chu">
     <shared-navbar></shared-navbar>
+    <b-container> </b-container>
   </div>
 </template>
 
@@ -13,3 +14,8 @@ import { Component, Vue } from 'nuxt-property-decorator';
 })
 export default class extends Vue {}
 </script>
+
+<style lang="scss">
+// .page-trang-chu {
+// }
+</style>
