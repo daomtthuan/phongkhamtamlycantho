@@ -1,3 +1,19 @@
+* {
+  &::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 0.25rem $dark;
+    background-color: $light;
+  }
+
+  &::-webkit-scrollbar {
+    width: 0.25rem;
+    background-color: $light;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: $primary;
+  }
+}
+
 .nav-link.active {
   @extend .font-weight-bold;
   @extend .border-bottom;
