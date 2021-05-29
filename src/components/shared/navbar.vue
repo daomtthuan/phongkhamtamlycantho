@@ -29,7 +29,7 @@ interface NavItem {
 }
 
 @Component({
-  name: 'component-shared-navbar',
+  name: 'component-shared-navbar'
 })
 export default class extends Vue {
   @Prop({ default: () => [] })
@@ -38,7 +38,7 @@ export default class extends Vue {
   private createNavItem(label: string): NavItem {
     return {
       label: label,
-      to: `/${this.$slug(label)}`,
+      to: `/${this.$slug(label)}`
     };
   }
 
@@ -46,11 +46,11 @@ export default class extends Vue {
     return {
       label: label,
       to: `/${this.$slug(label)}`,
-      items: labelItems.map((labelItem) => ({
+      items: labelItems.map(labelItem => ({
         label: labelItem,
         to: `/${this.$slug(label)}/${this.$slug(labelItem)}`,
-        isGroup: false,
-      })),
+        isGroup: false
+      }))
     };
   }
 
@@ -65,7 +65,7 @@ export default class extends Vue {
       this.createNavGroupItem('Dịch vụ', [
         'Thăm khám và tư vấn tâm lý',
         'Hướng dẫn phụ huynh can thiệp cho trẻ',
-        'Can thiệp cho trẻ, giúp trẻ phát triển / hoà nhập',
+        'Can thiệp cho trẻ, giúp trẻ phát triển / hoà nhập'
       ]),
       this.createNavGroupItem('Trắc nghiệm tâm lý', [
         'Nguy cơ tự kỷ - chậm nói',
@@ -74,10 +74,10 @@ export default class extends Vue {
         'Lo âu – Mất ngủ',
         'Nghiện Game / Rượu / Chất',
         'Sa sút trí tuệ - tập trung',
-        'Đánh giá trẻ tại trung tâm VTCare',
+        'Đánh giá trẻ tại trung tâm VTCare'
       ]),
       this.createNavGroupItem('Góc kiến thức', ['Chậm nói', 'Tự kỷ', 'Tăng động', 'Mất ngủ', 'Lo âu', 'Trầm cảm', 'Chuyên ngành']),
-      this.createNavGroupItem('Tin tức / hoạt động', ['Tuyển dụng', 'Hình ảnh / hoạt động', 'Cập nhật y học']),
+      this.createNavGroupItem('Tin tức / hoạt động', ['Tuyển dụng', 'Hình ảnh / hoạt động', 'Cập nhật y học'])
     ];
   }
 }

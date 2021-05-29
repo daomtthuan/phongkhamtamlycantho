@@ -11,5 +11,5 @@ Vue.prototype.$slug = (text: string) =>
   Slugify(text, {
     replacement: '-',
     lower: true,
-    locale: 'vi',
+    locale: 'vi'
   });

@@ -6,7 +6,7 @@
 import { Component, Vue } from 'nuxt-property-decorator';
 
 @Component({
-  name: 'layout-default',
+  name: 'layout-default'
 })
 export default class extends Vue {}
 </script>
