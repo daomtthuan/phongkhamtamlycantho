@@ -2,7 +2,6 @@
   <div class="page-trang-chu">
     <shared-navbar></shared-navbar>
     <shared-carousel-cover></shared-carousel-cover>
-    <b-container></b-container>
   </div>
 </template>
 

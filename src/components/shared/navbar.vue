@@ -1,7 +1,10 @@
 <template>
   <div class="compoent-shared-navbar">
     <b-navbar toggleable="lg" type="light" variant="white">
-      <b-navbar-brand href="/" class="font-weight-bold text-primary">PHÒNG KHÁM TÂM LÝ CẦN THƠ</b-navbar-brand>
+      <b-navbar-brand href="/" class="font-weight-bold text-primary">
+        <span class="d-none d-sm-inline">PHÒNG KHÁM TÂM LÝ CẦN THƠ</span>
+        <span class="d-sm-none">PK. TÂM LÝ CẦN THƠ</span>
+      </b-navbar-brand>
 
       <b-button class="d-lg-none" v-b-toggle.navbar-sidebar>
         <fa icon="bars"></fa>
@@ -32,15 +35,30 @@
       </template>
 
       <template #default>
-        <div class="px-3">
+        <div class="px-3 accordion" role="tablist">
           <div v-for="navItem in navItems" :key="navItem.to">
-            <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items" :class="{ active: isActive(navItem) }" no-caret>
-              <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to" :active="isActive(navChildItem)">
-                {{ navChildItem.label }}
-              </b-dropdown-item>
-            </b-nav-item-dropdown>
+            <div v-if="navItem.items">
+              <b-button v-b-toggle="navItem.to" block :variant="isActive(navItem) ? 'primary' : 'light'" class="text-right mt-2" role="tab">
+                {{ navItem.label }}
+              </b-button>
+              <b-collapse :id="navItem.to" accordion="accordion" role="tabpanel">
+                <b-card no-body class="mt-2">
+                  <b-card-body class="py-2 px-0">
+                    <b-link
+                      :href="navChildItem.to"
+                      v-for="navChildItem in navItem.items"
+                      :key="navChildItem.to"
+                      :active="isActive(navChildItem)"
+                      class="dropdown-item text-right"
+                    >
+                      {{ navChildItem.label }}
+                    </b-link>
+                  </b-card-body>
+                </b-card>
+              </b-collapse>
+            </div>
 
-            <b-button :to="navItem.to" block variant="primary" class="text-right my-2" v-else>
+            <b-button :href="navItem.to" block :variant="isActive(navItem) ? 'primary' : 'light'" class="text-right mt-2" v-else>
               {{ navItem.label }}
             </b-button>
           </div>
@@ -95,11 +113,7 @@ export default class extends Vue {
     return [
       this.createNavItem('Trang chủ'),
       this.createNavGroupItem('Giới thiệu', ['Bác sĩ tâm lý - SKTT', 'Phòng khám tâm lý', 'Trung tâm VTCare']),
-      this.createNavGroupItem('Dịch vụ', [
-        'Thăm khám và tư vấn tâm lý',
-        'Hướng dẫn phụ huynh can thiệp cho trẻ',
-        'Can thiệp cho trẻ, giúp trẻ phát triển / hoà nhập'
-      ]),
+      this.createNavGroupItem('Dịch vụ', ['Thăm khám và tư vấn tâm lý', 'Hướng dẫn phụ huynh', 'Can thiệp, giúp trẻ']),
       this.createNavGroupItem('Trắc nghiệm tâm lý', [
         'Nguy cơ tự kỷ - chậm nói',
         'Tăng động giảm chú ý',
