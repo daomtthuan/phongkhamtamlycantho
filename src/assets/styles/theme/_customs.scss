@@ -1,0 +1,5 @@
+.nav-link.active {
+  @extend .font-weight-bold;
+  @extend .border-bottom;
+  @extend .border-dark;
+}

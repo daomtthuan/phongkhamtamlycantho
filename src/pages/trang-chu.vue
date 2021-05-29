@@ -1,7 +1,8 @@
 <template>
   <div class="page-trang-chu">
     <shared-navbar></shared-navbar>
-    <b-container> </b-container>
+    <shared-carousel-cover></shared-carousel-cover>
+    <b-container></b-container>
   </div>
 </template>
 

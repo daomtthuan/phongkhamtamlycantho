@@ -1,42 +1,69 @@
 <template>
   <div class="compoent-shared-navbar">
     <b-navbar toggleable="lg" type="light" variant="white">
-      <b-navbar-brand href="/">PHÒNG KHÁM TẤM LÝ CẦN THƠ</b-navbar-brand>
-      <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
+      <b-navbar-brand href="/" class="font-weight-bold text-primary">PHÒNG KHÁM TÂM LÝ CẦN THƠ</b-navbar-brand>
+
+      <b-button class="d-lg-none" v-b-toggle.navbar-sidebar>
+        <fa icon="bars"></fa>
+      </b-button>
+
       <b-collapse id="nav-collapse" is-nav>
         <b-navbar-nav class="ml-auto">
           <div v-for="navItem in navItems" :key="navItem.to">
-            <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items">
-              <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to">
+            <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items" :class="{ active: isActive(navItem) }" no-caret>
+              <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to" :active="isActive(navChildItem)">
                 {{ navChildItem.label }}
               </b-dropdown-item>
             </b-nav-item-dropdown>
-            <b-nav-item :href="navItem.to" v-else>
-              {{ navItem.label }}
+            <b-nav-item :href="navItem.to" :active="isActive(navItem)" v-else>
+              <fa icon="home" v-if="navItem.to == '/trang-chu'"></fa>
+              <span class="d-none d-xl-inline">{{ navItem.label }}</span>
             </b-nav-item>
           </div>
         </b-navbar-nav>
       </b-collapse>
     </b-navbar>
+
+    <b-sidebar id="navbar-sidebar" bg-variant="white" right lazy backdrop shadow>
+      <template #header="{hide}">
+        <b-button @click="hide" class="ml-auto">
+          <fa icon="times"></fa>
+        </b-button>
+      </template>
+
+      <template #default>
+        <div class="px-3">
+          <div v-for="navItem in navItems" :key="navItem.to">
+            <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items" :class="{ active: isActive(navItem) }" no-caret>
+              <b-dropdown-item :href="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to" :active="isActive(navChildItem)">
+                {{ navChildItem.label }}
+              </b-dropdown-item>
+            </b-nav-item-dropdown>
+
+            <b-button :to="navItem.to" block variant="primary" class="text-right my-2" v-else>
+              {{ navItem.label }}
+            </b-button>
+          </div>
+        </div>
+      </template>
+    </b-sidebar>
   </div>
 </template>
 
 <script lang="ts">
-import { Component, Prop, Vue } from 'nuxt-property-decorator';
+import { Component, Vue } from 'nuxt-property-decorator';
 
 interface NavItem {
   label: string;
   to: string;
   items?: NavItem[];
+  icon?: string;
 }
 
 @Component({
   name: 'compoent-shared-navbar'
 })
 export default class extends Vue {
-  @Prop({ default: () => [] })
-  private activeItems!: string[];
-
   private createNavItem(label: string): NavItem {
     return {
       label: label,
@@ -44,7 +71,7 @@ export default class extends Vue {
     };
   }
 
-  createNavGroupItem(label: string, labelItems: string[]): NavItem {
+  private createNavGroupItem(label: string, labelItems: string[]): NavItem {
     return {
       label: label,
       to: `/${this.$slug(label)}`,
@@ -56,11 +83,15 @@ export default class extends Vue {
     };
   }
 
-  isActive(navItem: NavItem) {
-    return this.activeItems.includes(navItem.label);
+  private isActive(navItem: NavItem) {
+    if (this.$route.path == '/' && navItem.to == '/trang-chu') {
+      return true;
+    }
+
+    return this.$route.path.includes(navItem.to);
   }
 
-  get navItems(): NavItem[] {
+  private get navItems(): NavItem[] {
     return [
       this.createNavItem('Trang chủ'),
       this.createNavGroupItem('Giới thiệu', ['Bác sĩ tâm lý - SKTT', 'Phòng khám tâm lý', 'Trung tâm VTCare']),

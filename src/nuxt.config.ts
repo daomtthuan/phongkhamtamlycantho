@@ -21,9 +21,9 @@ export default <NuxtTypes.NuxtConfig>{
     link: [{ rel: 'icon', type: 'image/x-icon', href: '/favicon.ico' }]
   },
 
-  css: ['~/assets/styles/theme/index.scss'],
+  css: ['~/assets/styles/theme/index.scss', '@fortawesome/fontawesome-svg-core/styles.css'],
 
-  plugins: ['~/plugins/slugify'],
+  plugins: ['~/plugins/slugify', '~/plugins/fontawesome'],
 
   components: [{ path: '~/components/shared/', prefix: 'shared' }],
 
@@ -31,8 +31,7 @@ export default <NuxtTypes.NuxtConfig>{
   bootstrapVue: { icons: false, bootstrapCSS: false, bootstrapVueCSS: false },
   pwa: { manifest: { lang: 'vi' } },
 
-  buildModules: ['@nuxt/typescript-build', '@nuxtjs/fontawesome'],
-  fontawesome: { component: 'fa', suffix: true },
+  buildModules: ['@nuxt/typescript-build'],
 
   build: {
     babel: { compact: true }

@@ -4,8 +4,9 @@
 // Variables
 @import 'variables';
 
-// Bootstrap
+// Bootstrap Vue
 @import '~bootstrap/scss/bootstrap';
+@import '~bootstrap-vue/src/index';
 
 // Custom
 @import 'customs';
