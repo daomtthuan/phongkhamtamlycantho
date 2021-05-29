@@ -1,0 +1,31 @@
+{
+  "name": "phongkhamtamlycantho",
+  "version": "1.0.0",
+  "description": "Website Phòng khám Tâm lý Cần Thơ",
+  "main": "index.js",
+  "repository": "https://github.com/daomtthuan/phongkhamtamlycantho.git",
+  "author": "Daomtthuan <dao.mt.thuan@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "node ."
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "^3.3.5",
+    "bootstrap-vue": "^2.21.2",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "nuxt": "^2.15.6",
+    "nuxt-property-decorator": "^2.9.1",
+    "slugify": "^1.5.3"
+  },
+  "devDependencies": {
+    "@nuxt/types": "^2.15.6",
+    "@nuxt/typescript-build": "^2.1.0",
+    "@nuxtjs/fontawesome": "^1.1.2",
+    "sass": "1.32.12",
+    "sass-loader": "10.1.1"
+  }
+}
