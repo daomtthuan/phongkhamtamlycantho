@@ -1,12 +1,12 @@
 <template>
   <div class="compoent-shared-navbar sticky-top">
-    <b-navbar toggleable="lg" type="light" variant="white" class="shadow">
-      <b-navbar-brand to="/" class="font-weight-bold text-primary">
+    <b-navbar toggleable="lg" type="light" variant="light" class="shadow">
+      <nuxt-link to="/" class="navbar-brand font-weight-bold text-primary">
         <span class="d-none d-sm-inline">PHÒNG KHÁM TÂM LÝ CẦN THƠ</span>
         <span class="d-sm-none">PK. TÂM LÝ CẦN THƠ</span>
-      </b-navbar-brand>
+      </nuxt-link>
 
-      <b-button class="d-lg-none" v-b-toggle.navbar-sidebar>
+      <b-button class="d-lg-none" variant="primary" v-b-toggle.navbar-sidebar>
         <fa icon="bars"></fa>
       </b-button>
 
@@ -14,14 +14,23 @@
         <b-navbar-nav class="ml-auto">
           <div v-for="navItem in navItems" :key="navItem.to">
             <b-nav-item-dropdown :text="navItem.label" right v-if="navItem.items" :class="{ active: isActive(navItem) }" no-caret>
-              <b-dropdown-item :to="navChildItem.to" v-for="navChildItem in navItem.items" :key="navChildItem.to" :active="isActive(navChildItem)">
+              <nuxt-link
+                v-for="navChildItem in navItem.items"
+                :key="navChildItem.to"
+                :to="navChildItem.to"
+                class="dropdown-item"
+                :class="{ active: isActive(navChildItem) }"
+              >
                 {{ navChildItem.label }}
-              </b-dropdown-item>
+              </nuxt-link>
             </b-nav-item-dropdown>
-            <b-nav-item :to="navItem.to" :active="isActive(navItem)" v-else>
-              <fa icon="home" v-if="navItem.to == '/trang-chu'"></fa>
-              <span class="d-none d-xl-inline">{{ navItem.label }}</span>
-            </b-nav-item>
+
+            <li class="nav-item" :class="{ active: isActive(navItem) }" v-else>
+              <nuxt-link :to="navItem.to" class="nav-link">
+                <fa icon="home" v-if="navItem.to == '/trang-chu'"></fa>
+                <span class="d-none d-xl-inline">{{ navItem.label }}</span>
+              </nuxt-link>
+            </li>
           </div>
         </b-navbar-nav>
       </b-collapse>
@@ -41,26 +50,35 @@
               <b-button v-b-toggle="navItem.to" block :variant="isActive(navItem) ? 'primary' : 'light'" class="text-right mt-2" role="tab">
                 {{ navItem.label }}
               </b-button>
+
               <b-collapse :id="navItem.to" accordion="accordion" role="tabpanel">
                 <b-card no-body class="mt-2">
                   <b-card-body class="py-2 px-0">
-                    <b-link
-                      :to="navChildItem.to"
+                    <nuxt-link
                       v-for="navChildItem in navItem.items"
                       :key="navChildItem.to"
-                      :active="isActive(navChildItem)"
+                      :to="navChildItem.to"
                       class="dropdown-item text-right"
+                      :class="{ active: isActive(navChildItem) }"
                     >
                       {{ navChildItem.label }}
-                    </b-link>
+                    </nuxt-link>
                   </b-card-body>
                 </b-card>
               </b-collapse>
             </div>
 
-            <b-button :to="navItem.to" block :variant="isActive(navItem) ? 'primary' : 'light'" class="text-right mt-2" v-else>
+            <nuxt-link
+              :to="navItem.to"
+              class="btn btn-block text-right mt-2"
+              :class="{
+                'btn-primary': isActive(navItem),
+                'btn-light': !isActive(navItem)
+              }"
+              v-else
+            >
               {{ navItem.label }}
-            </b-button>
+            </nuxt-link>
           </div>
         </div>
       </template>

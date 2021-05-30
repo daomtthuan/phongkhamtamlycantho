@@ -14,8 +14,22 @@
   }
 }
 
-.nav-link.active {
+.nav-link.active,
+.nav-item.active {
   @extend .font-weight-bold;
   @extend .border-bottom;
   @extend .border-dark;
+}
+
+.page-enter-active,
+.page-leave-active,
+.layout-enter-active,
+.layout-leave-active {
+  transition: opacity 0.5s;
+}
+.page-enter,
+.page-leave-to,
+.layout-enter,
+.layout-leave-active {
+  opacity: 0;
 }

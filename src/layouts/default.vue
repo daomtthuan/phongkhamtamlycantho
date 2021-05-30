@@ -2,7 +2,7 @@
   <div class="layout-default">
     <shared-navbar></shared-navbar>
 
-    <b-container>
+    <b-container class="py-3">
       <b-row>
         <shared-carousel-cover></shared-carousel-cover>
       </b-row>

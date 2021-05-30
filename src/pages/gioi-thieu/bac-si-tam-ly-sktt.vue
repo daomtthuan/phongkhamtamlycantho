@@ -52,7 +52,7 @@
     <h2>CÁC HOẠT ĐỘNG TIÊU BIỂU</h2>
     <hr />
 
-    <b-row class="mt-3" v-for="rowIndex in Math.round(activities.length / 3)" :key="rowIndex">
+    <b-row class="my-4" v-for="rowIndex in Math.round(activities.length / 3)" :key="rowIndex">
       <b-col v-for="colIndex in 3" :key="colIndex" lg="4">
         <b-card v-if="activity(rowIndex, colIndex)" class="h-100">
           <template #header>
@@ -68,7 +68,9 @@
 
           <template #footer>
             <div class="text-right">
-              <b-button :to="activity(rowIndex, colIndex).src" size="sm">Xem chi tiết</b-button>
+              <nuxt-link :to="activity(rowIndex, colIndex).src" class="btn btn-sm btn-primary">
+                Xem chi tiết
+              </nuxt-link>
             </div>
           </template>
         </b-card>

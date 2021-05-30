@@ -45,5 +45,11 @@ export default <NuxtTypes.NuxtConfig>{
       });
     }
   },
-  telemetry: false
+  telemetry: false,
+  loading: {
+    color: '#5a9caf',
+    failedColor: '#922323',
+    throttle: 0,
+    height: '0.25rem'
+  }
 };
